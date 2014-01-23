@@ -37,6 +37,7 @@ module.exports = React.createClass(HelloWorld.prototype);
 
     git clone git://github.com/bjoerge/react-es6-class
     cd react-es6-class
+    npm install
     node test.js
 
 ### About
