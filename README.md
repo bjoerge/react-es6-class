@@ -1,0 +1,50 @@
+A proof of concept demonstrating server side [React](http://facebook.github.io/react/) rendering with ECMAScript 6 class syntax
+
+Allowing ECMAScript 6 [class syntax](http://wiki.ecmascript.org/doku.php?id=strawman:maximally_minimal_classes), so that 
+you can write your React components like this:
+
+```js
+/** @jsx React.DOM */
+var React = require("react");
+
+class HelloWorld {
+  getInitialState() {
+    return {
+      name: null
+    };
+  }
+  onNameInput(e) {
+    this.setState({name: e.target.value});
+  }
+  render() {
+    return (
+      <div>
+        <p>
+          What is your name? <input type="text" name="name" onInput="this.onNameInput" placeholder="Your name here" />
+        </p>
+        <p>
+          Hello {this.state.name}, it is {this.props.date.toTimeString()}
+        </p>
+      </div>
+    );
+  }
+}
+
+module.exports = React.createClass(HelloWorld.prototype);
+```
+
+### Try out
+
+    git clone git://github.com/bjoerge/react-es6-class
+    cd react-es6-class
+    node test.js
+
+### About
+This is a simple proof of concept. It hooks into Node.js `require.extensions` and compiles `.jsx` files on the fly using `React.transform` and the [Traceur compiler](https://github.com/google/traceur-compiler) (in that order). It works because [esprima](https://github.com/ariya/esprima) (which is used internally by `React.transform`) has experimental support for ES6/Harmony features. Please note that using [require.extensions](http://nodejs.org/api/globals.html#globals_require_extensions) is considered [bad practice](https://github.com/joyent/node/pull/5376).
+
+Other ECMAScript 6 features (default parameters, spread, generators, etc) may also work, but is not yet tested.
+
+The ES6 compiler code is originally based on [es6ify](http://thlorenz.github.io/es6ify/) by thlorenz.
+
+### Todo
+- Add browser side example using browserify + es6ify + reactify.
