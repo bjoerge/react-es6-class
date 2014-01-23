@@ -1,0 +1,17 @@
+{
+  "name": "react-es6-class",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "BSD-2-Clause",
+  "dependencies": {
+    "traceur": "0.0.8",
+    "react-tools": "~0.8.0",
+    "envify": "~0.2.0",
+    "react": "~0.8.0"
+  }
+}
