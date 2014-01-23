@@ -45,15 +45,16 @@ Note: Since you normally create React classes by calling `React.createClass()`, 
 Now you should see something like this:
 
 ```html
-<div data-reactid=".r[4udd5]" data-react-checksum="-2072932839">
-  <p data-reactid=".r[4udd5].[0]">
-    <span data-reactid=".r[4udd5].[0].[0]"> What is your name? </span>
-    <input type="text" name="name" placeholder="Your name here" data-reactid=".r[4udd5].[0].[1]">
+<div data-reactid=".r[3ujcb]" data-react-checksum="-430268094">
+  <p data-reactid=".r[3ujcb].[0]">
+    <span data-reactid=".r[3ujcb].[0].[0]">What is your name?</span>
+    <input type="text" name="name" placeholder="Your name here" data-reactid=".r[3ujcb].[0].[1]">
   </p>
-  <p data-reactid=".r[4udd5].[1]">
-    <span data-reactid=".r[4udd5].[1].[0]"> Hello </span>
-    <span data-reactid=".r[4udd5].[1].[2]">, it is </span>
-    <span data-reactid=".r[4udd5].[1].[3]">11:43:08 GMT+0100 (CET)</span>
+  <p data-reactid=".r[3ujcb].[1]">
+    <span data-reactid=".r[3ujcb].[1].[0]"> Hello </span>
+    <span data-reactid=".r[3ujcb].[1].[1]">friend</span>
+    <span data-reactid=".r[3ujcb].[1].[2]">, it is </span>
+    <span data-reactid=".r[3ujcb].[1].[3]">18:14:40 GMT+0100 (CET)</span>
   </p>
 </div>
 ```

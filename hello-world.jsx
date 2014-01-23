@@ -4,7 +4,7 @@ var React = require("react");
 class HelloWorld {
   getInitialState() {
     return {
-      name: null
+      name: this.props.name
     };
   }
   onNameInput(e) {

@@ -1,18 +1,22 @@
-var compiler = require("./compile-es6");
-function compileES6(filename, src) {
-  return compiler(filename, src).source;
-}
-var compileJSX = require("./compile-jsx");
 
+// Load transpilers/compilers/source transforms or whatever you prefer to call it
+var compileES6 = require("./boilerplate/transpile-es6");
+var compileJSX = require("./boilerplate/transpile-jsx");
 
-var install = require("./install-transpilers");
+// This functionality could probably be installed via npm
+var install = require("./boilerplate/install-transpilers");
+
+// Hook into require.extensions with the following transform functions
 install('.jsx', [compileJSX, compileES6]);
+
+// If we want to use ES6 syntax in other files we require()
 install('.js', [compileES6]);
 
+// --- end of boilerplate. Now, let it happen
+
 var React = require("react");
+var HelloWorld = require("./hello-world.jsx");
 
-var HelloWorld = require("./hello-world");
-
-React.renderComponentToString(HelloWorld({date: new Date()}), function(str) {
+React.renderComponentToString(HelloWorld({name: "friend", date: new Date()}), function(str) {
   console.log(str)
 });

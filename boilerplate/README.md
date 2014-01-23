@@ -1,0 +1,1 @@
+This directory contains the boilerplate code that taps into require.extensions and compiles ES6 and JSX on the fly

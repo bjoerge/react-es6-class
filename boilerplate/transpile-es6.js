@@ -1,8 +1,9 @@
+// ES5 source transform/transpiler based on the es6ify browserify transform by thlorenz
+
 'use strict';
 
 var traceur            =  require('traceur')
   , compile            =  traceur.codegeneration.Compiler.compile
-  , SourceMapGenerator =  traceur.outputgeneration.SourceMapGenerator
   , Project            =  traceur.semantics.symbols.Project
   , ProjectWriter      =  traceur.outputgeneration.ProjectWriter
   , SourceFile         =  traceur.syntax.SourceFile
@@ -26,7 +27,6 @@ var traceur            =  require('traceur')
     , 'generators'
     , 'deferredFunctions'
     , 'blockBinding'
-    , 'sourceMaps'
   ].forEach(function (k) { traceur.options[k] = true; });
 }();
 
@@ -49,16 +49,7 @@ module.exports = function compileFile(file, contents) {
 
   var compiled = compile(reporter, project, false);
 
-  if (err) return { source: null, sourcemap: null, error: err };
+  if (err) throw err;
 
-  var options;
-
-  if (traceur.options.sourceMaps) {
-    var config = { file: file + '.es6' };
-    var sourceMapGenerator = new SourceMapGenerator(config);
-    options = { sourceMapGenerator: sourceMapGenerator };
-  }
-
-  var source = ProjectWriter.write(compiled, options);
-  return { source: source, sourcemap: options.sourceMap, error: null };
+  return ProjectWriter.write(compiled);
 };
