@@ -20,7 +20,8 @@ class HelloWorld {
     return (
       <div>
         <p>
-          What is your name? <input type="text" name="name" onInput="this.onNameInput" placeholder="Your name here" />
+          What is your name?
+          <input type="text" name="name" onInput="this.onNameInput" placeholder="Your name here" />
         </p>
         <p>
           Hello {this.state.name}, it is {this.props.date.toTimeString()}
@@ -33,6 +34,9 @@ class HelloWorld {
 module.exports = React.createClass(HelloWorld.prototype);
 ```
 
+Note: Since you normally create React classes by calling `React.createClass()`, and React apparently has no way (yet) of [extending a base component class](https://github.com/facebook/react/issues/613), you will have to call React.createClass(HelloWorld.prototype) after defining the component class.
+
+
 ### Try out
 
     git clone git://github.com/bjoerge/react-es6-class
@@ -40,10 +44,26 @@ module.exports = React.createClass(HelloWorld.prototype);
     npm install
     node test.js
 
+Now you should see something like this:
+
+```html
+<div data-reactid=".r[4udd5]" data-react-checksum="-2072932839">
+  <p data-reactid=".r[4udd5].[0]">
+    <span data-reactid=".r[4udd5].[0].[0]"> What is your name? </span>
+    <input type="text" name="name" placeholder="Your name here" data-reactid=".r[4udd5].[0].[1]">
+  </p>
+  <p data-reactid=".r[4udd5].[1]">
+    <span data-reactid=".r[4udd5].[1].[0]"> Hello </span>
+    <span data-reactid=".r[4udd5].[1].[2]">, it is </span>
+    <span data-reactid=".r[4udd5].[1].[3]">11:43:08 GMT+0100 (CET)</span>
+  </p>
+</div>
+```
+
 ### About
 This is a simple proof of concept. It hooks into Node.js `require.extensions` and compiles `.jsx` files on the fly using `React.transform` and the [Traceur compiler](https://github.com/google/traceur-compiler) (in that order). It works because [esprima](https://github.com/ariya/esprima) (which is used internally by `React.transform`) has experimental support for ES6/Harmony features. Please note that using [require.extensions](http://nodejs.org/api/globals.html#globals_require_extensions) is considered [bad practice](https://github.com/joyent/node/pull/5376).
 
-Other ECMAScript 6 features (default parameters, spread, generators, etc) may also work, but is not yet tested.
+Other ECMAScript 6 features (default parameters, spread, generators, etc) may also work, but is yet to be tested.
 
 The ES6 compiler code is originally based on [es6ify](http://thlorenz.github.io/es6ify/) by thlorenz.
 
