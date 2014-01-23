@@ -1,6 +1,4 @@
-A proof of concept demonstrating server side [React](http://facebook.github.io/react/) rendering with ECMAScript 6 class syntax
-
-Allowing ECMAScript 6 [class syntax](http://wiki.ecmascript.org/doku.php?id=strawman:maximally_minimal_classes), so that 
+A proof of concept demonstrating server side [React](http://facebook.github.io/react/) rendering with ECMAScript 6 [class syntax](http://wiki.ecmascript.org/doku.php?id=strawman:maximally_minimal_classes), so that 
 you can write your React components like this:
 
 ```js
